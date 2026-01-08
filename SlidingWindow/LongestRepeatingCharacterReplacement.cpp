@@ -4,6 +4,8 @@
 using namespace std;
 class Solution {
 public:
+
+    // count the the maxFreq of char in window (which we can cosider main char) and after subtracting from window we will get the number of characher that need to be chang and according to that grow or shrink the window
     // int characterReplacement(string s, int k) {
     //     int n=s.size();
     //     int maxLen=0;

@@ -22,26 +22,6 @@ public:
     //     return maxCount;
     // }
 
-    // int totalFruit(vector<int>& fruits) {
-    //     int n=fruits.size();
-    //     int maxCount=0;
-    //     int left=0,right=0;
-    //     unordered_map<int,int> bucket;
-    //     while(right<n){
-    //         bucket[fruits[right]]++;
-    //         while(bucket.size()>2){
-    //             bucket[fruits[left]]--;
-    //             if(bucket[fruits[left]]==0){
-    //                 bucket.erase(fruits[left]);
-    //             }
-    //             left++;
-    //         }
-    //         maxCount=max(maxCount,right-left+1);
-    //         right++;
-    //     }
-    //     return maxCount;
-    // }
-
     int totalFruit(vector<int>& fruits) {
         int n=fruits.size();
         int maxCount=0;
