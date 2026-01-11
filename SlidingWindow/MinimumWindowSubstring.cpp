@@ -1,9 +1,10 @@
-#include<iostream>
-#include<string>
-#include<unordered_map>
-#include<climits>
+#include <iostream>
+#include <string>
+#include <unordered_map>
+#include <climits>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
     // string minWindow(string s, string t) {
     //     int n=s.size();
@@ -11,13 +12,17 @@ public:
     //     int minLen=INT_MAX;
     //     int startIndex=-1;
     //     for(int i=0;i<n;i++){
+    //         //count frequency of each char in t
     //         vector<int> freq(256,0);
     //         int count=0;
     //         for(auto ch:t) freq[ch]++;
     //         for(int j=i;j<n;j++){
+    //              // if "freq[s[j]]>0" this is true which means that this char is needed
     //             if(freq[s[j]]>0) count++;
+    //             // if a char no needed then its freq will automatically goes in negative
     //             freq[s[j]]--;
-
+    //              // count indicate the unique char that are needed
+    //              // if total count == sizeOf(t) then find find window length and update it as needed
     //             if(count==m){
     //                 if(j-i+1<minLen)
     //                 {
@@ -31,39 +36,48 @@ public:
     //     if(startIndex==-1) return "";
     //     return s.substr(startIndex,minLen);
     // }
-    string minWindow(string s, string t) {
-        int n=s.size();
-        int m=t.size();
-        int minLen=INT_MAX;
-        int right=0,left=0;
-        int startIndex=-1;
-        unordered_map<char,int> freq;
-        for(auto ch:t) freq[ch]++;
-        int count=0;
-        while(right<n){
-            if(freq[s[right]]>0) count++;
+    string minWindow(string s, string t)
+    {
+        int n = s.size();
+        int m = t.size();
+        int minLen = INT_MAX;
+        int right = 0, left = 0;
+        int startIndex = -1;
+        unordered_map<char, int> freq;
+        for (auto ch : t)
+            freq[ch]++;
+        int count = 0;
+        while (right < n)
+        {
+            if (freq[s[right]] > 0)
+                count++;
             freq[s[right]]--;
 
-            while(count==m){
-                if(right-left+1<minLen){
-                    minLen=right-left+1;
-                    startIndex=left;
+            while (count == m)
+            {
+                if (right - left + 1 < minLen)
+                {
+                    minLen = right - left + 1;
+                    startIndex = left;
                 }
                 freq[s[left]]++;
-                if(freq[s[left]] > 0) count--;
+                if (freq[s[left]] > 0)
+                    count--;
                 left++;
             }
 
             right++;
         }
-        if(startIndex==-1) return "";
-        return s.substr(startIndex,minLen);
+        if (startIndex == -1)
+            return "";
+        return s.substr(startIndex, minLen);
     }
 };
-int main(){
+int main()
+{
     Solution sol;
-    string s="ADOBECODEBANC";
-    string t="ABC";
-    cout<<sol.minWindow(s,t)<<endl; // Output: "BANC"
+    string s = "ADOBECODEBANC";
+    string t = "ABC";
+    cout << sol.minWindow(s, t) << endl; // Output: "BANC"
     return 0;
 }
