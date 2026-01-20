@@ -7,7 +7,7 @@ class Solution
 public:
     // int findPlatform(vector<int>& Arrival, vector<int>& Departure){
     //     int n=Arrival.size();
-    //     int platform=1;
+    //     int platform=0;
     //     for(int i=0;i<n;i++){
     //         int count=1;
     //         for(int j=i+1;j<n;j++){
